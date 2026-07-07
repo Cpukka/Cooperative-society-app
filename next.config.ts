@@ -1,7 +1,29 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  serverExternalPackages: ["pg", "@prisma/adapter-pg", "@prisma/client", "prisma"],
 
-const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "localhost",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+    ],
+  },
+
+  transpilePackages: [
+    "next-auth",
+    "@auth/prisma-adapter",
+    "@next-auth/prisma-adapter",
+    "lucide-react",
+    "recharts",
+    "bcryptjs",
+  ],
 };
 
-export default nextConfig;
+module.exports = nextConfig;
