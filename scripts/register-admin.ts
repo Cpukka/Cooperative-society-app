@@ -30,7 +30,6 @@ async function registerAdmin() {
       memberDetails: {
         create: {
           memberId,
-          phone: '+1234567890',
           occupation: 'Administrator',
           monthlyIncome: 0,
           joinDate: new Date(),

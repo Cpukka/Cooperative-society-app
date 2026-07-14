@@ -1,12 +1,13 @@
 // app/error/page.tsx
 'use client'
 
+import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { AlertCircle, ArrowLeft, Home } from 'lucide-react'
 import { Button } from '@/app/components/ui/Button'
 
-export default function AuthErrorPage() {
+function ErrorPageContent() {
   const searchParams = useSearchParams()
   const error = searchParams.get('error')
 
@@ -99,5 +100,13 @@ export default function AuthErrorPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function AuthErrorPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <ErrorPageContent />
+    </Suspense>
   )
 }

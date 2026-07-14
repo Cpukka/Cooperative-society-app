@@ -3,9 +3,21 @@ import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/lib/prisma'
 import bcrypt from 'bcryptjs'
 
+export const runtime = 'nodejs'
+
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json()
+    let body: any
+
+    try {
+      body = await request.json()
+    } catch {
+      return NextResponse.json(
+        { error: 'Invalid JSON payload' },
+        { status: 400 }
+      )
+    }
+
     const {
       email,
       password,
@@ -82,8 +94,7 @@ export async function POST(request: NextRequest) {
       }
     })
 
-    // Remove password from response
-    const { password: _, ...userWithoutPassword } = user
+    const { password: _password, ...userWithoutPassword } = user
 
     return NextResponse.json({
       message: 'Registration successful. Your application is pending review.',

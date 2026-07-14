@@ -66,7 +66,7 @@ export function Sidebar() {
       <div className="p-4 border-t border-gray-200 dark:border-gray-700 space-y-4">
         <div className="flex items-center justify-between">
           <button
-            onClick={() => signOut({ callbackUrl: '/auth/signin' })}
+            onClick={() => signOut({ callbackUrl: '/' })}
             className="flex items-center gap-3 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors"
           >
             <LogOut className="w-5 h-5" />
