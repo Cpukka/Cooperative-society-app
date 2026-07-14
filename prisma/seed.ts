@@ -1,6 +1,6 @@
 // prisma/seed.ts
 import { PrismaPg } from "@prisma/adapter-pg"
-import { PrismaClient } from "../app/generated/prisma/client" // Fixed path
+import { PrismaClient } from "@/app/generated/prisma/client"
 import bcrypt from 'bcryptjs'
 import 'dotenv/config'
 
@@ -37,6 +37,7 @@ async function main() {
         memberDetails: {
           create: {
             memberId: 'ADM001',
+            phone: '+1234567890',
             occupation: 'Administrator',
             monthlyIncome: 100000,
             joinDate: new Date(),
@@ -63,6 +64,7 @@ async function main() {
         memberDetails: {
           create: {
             memberId: 'FIN001',
+            phone: '+1234567891',
             occupation: 'Finance Officer',
             monthlyIncome: 80000,
             joinDate: new Date(),
@@ -151,8 +153,7 @@ async function main() {
 }
 
 main()
-
-.catch((e) => {
+  .catch((e) => {
     console.error(e)
     process.exit(1)
   })
